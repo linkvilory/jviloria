@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan Viloria — Product Manager</title>
+  <meta name="description" content="Product Manager especializado en transformación digital, SaaS, KYC e IA aplicada." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f8fafc;
+      --bg-card: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --accent-dark: #1d4ed8;
+      --tag-bg: #eff6ff;
+      --tag-text: #1e40af;
+      --nav-h: 64px;
+      --max-w: 900px;
+      --radius: 10px;
+      --transition: 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px;
+      cursor: pointer;
+    }
+
+    .lang-btn {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 16px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+      letter-spacing: 0.03em;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 2rem);
+    }
+
+    section { padding: 5rem 0; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-inner {
+      width: 100%;
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-light);
+      color: var(--tag-text);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2.5rem;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .about-text p + p { margin-top: 1rem; }
+
+    .about-focus {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .focus-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .focus-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .focus-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg-soft); border-radius: 24px; margin: 0 -2rem; padding: 5rem 2rem; }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 2rem;
+      position: relative;
+    }
+
+    .tl-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 140px;
+      top: 28px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+      transform: translateX(calc(-50% + 1rem - 0.5px));
+    }
+
+    .tl-left {
+      padding-top: 18px;
+      text-align: right;
+      position: relative;
+    }
+
+    .tl-date {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }
+
+    .tl-company {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .tl-right {
+      padding: 18px 0 36px 2rem;
+      position: relative;
+    }
+
+    .tl-right::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 24px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: translate(-50%, -50%);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .tl-role {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .tl-company-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .tl-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .tl-bullets {
+      list-style: none;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .tl-bullets li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .tl-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .tl-clients {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .client-tag {
+      font-size: 11px;
+      font-weight: 500;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .skill-card-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      font-size: 12px;
+      font-weight: 500;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .skill-pill.accent {
+      background: var(--tag-bg);
+      border-color: #bfdbfe;
+      color: var(--tag-text);
+    }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications { background: var(--bg); }
+
+    .cert-featured {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cert-card-featured {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color var(--transition), transform var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cert-card-featured:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .cert-issuer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .cert-issuer-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .cert-card-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .cert-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .cert-meta-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid #bfdbfe;
+    }
+
+    .cert-date {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .cert-view-link {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .cert-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cert-group-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .cert-group { margin-bottom: 2rem; }
+
+    .cert-grid-sm {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .cert-card-sm {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--transition);
+    }
+
+    .cert-card-sm:hover { border-color: var(--accent); }
+
+    .cert-card-sm .cert-card-name {
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .cert-featured { grid-template-columns: 1fr; }
+    }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--bg-soft); border-radius: 24px; margin: 0 -2rem; padding: 5rem 2rem; }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .edu-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .edu-degree {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .edu-school {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .edu-years {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 2rem;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .cert-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+
+    .contact-inner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      border-radius: 16px;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+      color: white;
+    }
+
+    .contact-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 18px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background var(--transition);
+    }
+
+    .contact-link:hover { background: rgba(255,255,255,0.18); }
+
+    .btn-white {
+      background: white;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform var(--transition);
+    }
+
+    .btn-white:hover { transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .tl-item { grid-template-columns: 1fr; }
+      .tl-left { text-align: left; padding-top: 0; margin-bottom: 6px; }
+      .tl-right { padding-left: 1rem; }
+      .tl-item::after { display: none; }
+      .tl-right::before { display: none; }
+      .hero-stats { gap: 1.5rem; }
+      .nav-links { display: none; }
+      #experience, #education { margin: 0 -1.5rem; padding: 4rem 1.5rem; }
+    }
+
+    /* ── i18n hidden ── */
+    [data-lang="es"] .en { display: none; }
+    [data-lang="en"] .es { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">JV<span>.</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" class="es">Sobre mí</a><a href="#about" class="en">About</a></li>
+      <li><a href="#experience" class="es">Experiencia</a><a href="#experience" class="en">Experience</a></li>
+      <li><a href="#skills" class="es">Skills</a><a href="#skills" class="en">Skills</a></li>
+      <li><a href="#certifications" class="es">Certificaciones</a><a href="#certifications" class="en">Certifications</a></li>
+      <li><a href="#contact" class="es">Contacto</a><a href="#contact" class="en">Contact</a></li>
+    </ul>
+    <div class="lang-toggle" onclick="toggleLang()">
+      <button class="lang-btn" id="btn-es" onclick="setLang('es', event)">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en', event)">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        <span class="es">Disponible para nuevas oportunidades</span>
+        <span class="en">Open to new opportunities</span>
+      </div>
+
+      <h1 class="hero-name">Jonathan<br>Viloria Mendoza</h1>
+
+      <p class="hero-title es">
+        Product Manager especializado en transformación digital, plataformas SaaS,
+        identidad digital y automatización con IA. Más de 16 años construyendo productos
+        que conectan tecnología con valor de negocio.
+      </p>
+      <p class="hero-title en">
+        Product Manager focused on digital transformation, SaaS platforms, KYC & identity,
+        and AI-powered automation. 16+ years building products that bridge technology and business value.
+      </p>
+
+      <div class="hero-tags">
+        <span class="tag">SaaS Platforms</span>
+        <span class="tag">Digital Transformation</span>
+        <span class="tag">KYC & Identity</span>
+        <span class="tag">AI & Automation</span>
+        <span class="tag">API Ecosystems</span>
+        <span class="tag">Agile / Scrum</span>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="mailto:linkvilory@hotmail.com" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span class="es">Contáctame</span><span class="en">Contact me</span>
+        </a>
+        <a href="https://www.linkedin.com/in/jonathanviloria" target="_blank" class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="Profile.pdf" download class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span class="es">Descargar CV</span><span class="en">Download CV</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">16+</div>
+          <div class="stat-label es">Años de experiencia</div>
+          <div class="stat-label en">Years of experience</div>
+        </div>
+        <div>
+          <div class="stat-num">8+</div>
+          <div class="stat-label es">Años en gestión de producto</div>
+          <div class="stat-label en">Years in product management</div>
+        </div>
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label es">Clientes enterprise</div>
+          <div class="stat-label en">Enterprise clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label es">Sobre mí</div>
+    <div class="section-label en">About me</div>
+    <h2 class="section-title es">Producto que piensa,<br>tecnología que transforma</h2>
+    <h2 class="section-title en">Product that thinks,<br>technology that transforms</h2>
+
+    <div class="about-grid">
+      <div class="about-text es">
+        <p>
+          Soy Product Manager especializado en el diseño de plataformas operativas inteligentes.
+          Mi trabajo se centra en ayudar a organizaciones a transformar procesos complejos en
+          sistemas digitales escalables mediante automatización, inteligencia artificial aplicada
+          y arquitecturas basadas en APIs.
+        </p>
+        <p>
+          En los últimos años he evolucionado hacia un enfoque de <strong>AI-augmented product management</strong>,
+          donde la inteligencia artificial amplifica la capacidad de discovery, análisis de procesos
+          y prototipado de soluciones.
+        </p>
+        <p>
+          Creo que la próxima generación de productos no será simplemente digital, sino
+          operativamente inteligente: procesos, datos y automatización trabajando de forma integrada
+          para crear organizaciones más eficientes.
+        </p>
+      </div>
+      <div class="about-text en">
+        <p>
+          I'm a Product Manager specialized in designing intelligent operational platforms.
+          My work focuses on helping organizations transform complex processes into scalable
+          digital systems through automation, applied AI, and API-based architectures.
+        </p>
+        <p>
+          Over the last few years I've evolved toward an <strong>AI-augmented product management</strong>
+          approach, where artificial intelligence amplifies discovery capacity, process analysis,
+          and solution prototyping.
+        </p>
+        <p>
+          I firmly believe the next generation of products won't simply be digital, but operationally
+          intelligent — where processes, data, and automation work in an integrated way to create
+          more efficient organizations.
+        </p>
+      </div>
+
+      <div class="about-focus">
+        <div class="focus-item">
+          <span class="focus-icon">⚡</span>
+          <span class="focus-text es">Automatización operativa</span>
+          <span class="focus-text en">Operational automation</span>
+        </div>
+        <div class="focus-item">
+          <span class="focus-icon">🪪</span>
+          <span class="focus-text es">Identidad digital & KYC</span>
+          <span class="focus-text en">Digital identity & KYC</span>
+        </div>
+        <div class="focus-item">
+          <span class="focus-icon">🔗</span>
+          <span class="focus-text es">Ecosistemas de APIs</span>
+          <span class="focus-text en">API ecosystems</span>
+        </div>
+        <div class="focus-item">
+          <span class="focus-icon">🤖</span>
+          <span class="focus-text es">IA aplicada a operaciones</span>
+          <span class="focus-text en">AI applied to operations</span>
+        </div>
+        <div class="focus-item">
+          <span class="focus-icon">📦</span>
+          <span class="focus-text es">Plataformas SaaS</span>
+          <span class="focus-text en">SaaS platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label es">Experiencia</div>
+    <div class="section-label en">Experience</div>
+    <h2 class="section-title es">Trayectoria profesional</h2>
+    <h2 class="section-title en">Professional journey</h2>
+
+    <div class="timeline">
+
+      <!-- Digipro PM -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2022 — <span class="es">Presente</span><span class="en">Present</span></div>
+          <div class="tl-company">Digipro</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">Product Manager</div>
+          <div class="tl-company-name">Digipro</div>
+          <div class="tl-desc es">
+            Responsable de la evolución estratégica de productos digitales orientados a automatizar
+            procesos operativos y regulatorios en sectores financiero e inmobiliario.
+          </div>
+          <div class="tl-desc en">
+            Responsible for the strategic evolution of digital products designed to automate
+            operational and regulatory processes in financial and real estate sectors.
+          </div>
+          <ul class="tl-bullets es">
+            <li>Definición de visión de producto, roadmap y estrategia de evolución de la plataforma</li>
+            <li>Identificación de oportunidades mediante investigación de mercado y análisis de clientes</li>
+            <li>Gestión y priorización de backlog bajo metodologías ágiles (SCRUM)</li>
+            <li>Diseño de plataformas que integran identidad digital, gestión documental y automatización de procesos</li>
+          </ul>
+          <ul class="tl-bullets en">
+            <li>Product vision, roadmap definition and platform evolution strategy</li>
+            <li>Opportunity identification through market research and customer analysis</li>
+            <li>Backlog management and prioritization under Agile methodologies (SCRUM)</li>
+            <li>Platform design integrating digital identity, document management and process automation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Digipro PO -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2019 — 2022</div>
+          <div class="tl-company">Digipro</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">Product Owner</div>
+          <div class="tl-company-name">Digipro</div>
+          <div class="tl-desc es">
+            Enlace entre clientes, negocio y equipos de desarrollo. Conceptualización y entrega
+            de soluciones para digitalizar procesos empresariales.
+          </div>
+          <div class="tl-desc en">
+            Bridge between clients, business, and development teams. Conceptualization and delivery
+            of solutions to digitalize enterprise processes.
+          </div>
+          <ul class="tl-bullets es">
+            <li>Definición y gestión de historias de usuario y backlog de producto</li>
+            <li>Diseño de propuestas funcionales, mockups y flujos de producto</li>
+            <li>Coordinación con equipos de diseño y desarrollo para entrega incremental de valor</li>
+          </ul>
+          <ul class="tl-bullets en">
+            <li>User story definition and product backlog management</li>
+            <li>Functional proposals, mockups, and product flow design</li>
+            <li>Coordination with design and development teams for incremental value delivery</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Digipro Mobile -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2018 — 2019</div>
+          <div class="tl-company">Digipro</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">Mobile Leader</div>
+          <div class="tl-company-name">Digipro</div>
+          <div class="tl-desc es">
+            Liderazgo del equipo de desarrollo móvil y diseño de un SDK para integraciones con clientes
+            del sector financiero. Implementé capacidades avanzadas de captura e identidad digital.
+          </div>
+          <div class="tl-desc en">
+            Led the mobile development team and designed an SDK for financial sector client integrations.
+            Implemented advanced capture and digital identity capabilities.
+          </div>
+          <ul class="tl-bullets es">
+            <li>OCR, reconocimiento facial, huella digital y firma digital</li>
+            <li>Evolución de la app de Swift 3 a Swift 5</li>
+            <li>Documentación del SDK para integraciones externas</li>
+          </ul>
+          <ul class="tl-bullets en">
+            <li>OCR, facial recognition, fingerprint capture and digital signature</li>
+            <li>App evolution from Swift 3 to Swift 5</li>
+            <li>SDK documentation for external integrations</li>
+          </ul>
+          <div class="tl-clients">
+            <span class="client-tag">American Express</span>
+            <span class="client-tag">Scotiabank</span>
+            <span class="client-tag">Consubanco</span>
+            <span class="client-tag">Walmart</span>
+            <span class="client-tag">Monte de Piedad</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Klein und Gross -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2017 — 2018</div>
+          <div class="tl-company">Klein und Gross</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role es">Gerente de Desarrollo</div>
+          <div class="tl-role en">Development Manager</div>
+          <div class="tl-company-name">Klein und Gross</div>
+          <div class="tl-desc es">
+            Lideré el área de desarrollo tecnológico, coordinando equipos multidisciplinarios e
+            impulsando estrategias digitales, SEO y publicidad programática para clientes de alto perfil.
+          </div>
+          <div class="tl-desc en">
+            Led the technology development area, coordinating multidisciplinary teams and driving
+            digital strategies, SEO, and programmatic advertising for high-profile clients.
+          </div>
+          <div class="tl-clients">
+            <span class="client-tag">L'Oréal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CEREBRO -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2016 — 2017</div>
+          <div class="tl-company">Cerebro Smart Media</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">IT Architect</div>
+          <div class="tl-company-name">Cerebro Smart Media</div>
+          <div class="tl-desc es">
+            Diseño de un sistema interno para gestión y validación de campañas publicitarias,
+            mejorando la transparencia y trazabilidad en la entrega de resultados para clientes.
+          </div>
+          <div class="tl-desc en">
+            Designed an internal system for advertising campaign management and validation,
+            improving transparency and traceability in results delivery for clients.
+          </div>
+          <div class="tl-clients">
+            <span class="client-tag">Coca-Cola</span>
+            <span class="client-tag">Adidas</span>
+            <span class="client-tag">Bridgestone</span>
+            <span class="client-tag">Chedraui</span>
+            <span class="client-tag">Acura</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Archer Troy -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2015 — 2016</div>
+          <div class="tl-company">Archer Troy</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">Chief Developer</div>
+          <div class="tl-company-name">Archer Troy Publicidad</div>
+          <div class="tl-desc es">
+            Lideré el diseño y desarrollo de plataformas web y experiencias digitales interactivas
+            para campañas de marketing y entretenimiento.
+          </div>
+          <div class="tl-desc en">
+            Led the design and development of web platforms and interactive digital experiences
+            for marketing and entertainment campaigns.
+          </div>
+          <div class="tl-clients">
+            <span class="client-tag">Plaza Universidad</span>
+            <span class="client-tag">Cinépolis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grumac -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2009 — 2015</div>
+          <div class="tl-company">Grumac Mac Multimedia</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">Chief Developer</div>
+          <div class="tl-company-name">Grumac Mac Multimedia</div>
+          <div class="tl-desc es">
+            Desarrollo de apps móviles, soluciones de streaming para móvil y Smart TV,
+            y plataformas web corporativas durante la transición al ecosistema móvil.
+          </div>
+          <div class="tl-desc en">
+            Developed mobile apps, audio/video streaming solutions for mobile and Smart TV,
+            and corporate web platforms during the transition to the mobile ecosystem.
+          </div>
+        </div>
+      </div>
+
+      <!-- Concepto Creativo -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">2008 — 2009</div>
+          <div class="tl-company">Concepto Creativo</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">iOS Developer</div>
+          <div class="tl-company-name">Concepto Creativo S.A. de C.V.</div>
+          <div class="tl-desc es">
+            Parte de una de las primeras iniciativas de desarrollo iOS en México,
+            construyendo aplicaciones móviles cuando el ecosistema de iPhone era incipiente en el país.
+          </div>
+          <div class="tl-desc en">
+            Part of one of the first iOS development initiatives in Mexico, building mobile applications
+            when the iPhone ecosystem was just emerging in the country.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title es">Competencias clave</h2>
+    <h2 class="section-title en">Core competencies</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title es">Gestión de Producto</div>
+        <div class="skill-card-title en">Product Management</div>
+        <div class="skill-pills">
+          <span class="skill-pill accent">Product Strategy</span>
+          <span class="skill-pill accent">Roadmapping</span>
+          <span class="skill-pill accent">Discovery</span>
+          <span class="skill-pill">Backlog Management</span>
+          <span class="skill-pill">OKRs</span>
+          <span class="skill-pill">Go-to-Market</span>
+          <span class="skill-pill">User Research</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title es">Metodologías</div>
+        <div class="skill-card-title en">Methodologies</div>
+        <div class="skill-pills">
+          <span class="skill-pill accent">Agile</span>
+          <span class="skill-pill accent">Scrum</span>
+          <span class="skill-pill">Design Thinking</span>
+          <span class="skill-pill">User Journey</span>
+          <span class="skill-pill">Personas</span>
+          <span class="skill-pill">FODA / SWOT</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Tech & Platforms</div>
+        <div class="skill-pills">
+          <span class="skill-pill accent">API Design</span>
+          <span class="skill-pill accent">SaaS</span>
+          <span class="skill-pill">KYC / Identity</span>
+          <span class="skill-pill">OCR</span>
+          <span class="skill-pill">iOS / Swift</span>
+          <span class="skill-pill">AI & Automation</span>
+          <span class="skill-pill">DMS</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title es">Liderazgo & Colaboración</div>
+        <div class="skill-card-title en">Leadership & Collaboration</div>
+        <div class="skill-pills">
+          <span class="skill-pill accent">Cross-functional teams</span>
+          <span class="skill-pill">Stakeholder management</span>
+          <span class="skill-pill">Client collaboration</span>
+          <span class="skill-pill">Technical leadership</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title es">Idiomas</div>
+        <div class="skill-card-title en">Languages</div>
+        <div class="skill-pills">
+          <span class="skill-pill accent">Español — Nativo</span>
+          <span class="skill-pill">English — Professional</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title es">Sectores</div>
+        <div class="skill-card-title en">Industries</div>
+        <div class="skill-pills">
+          <span class="skill-pill accent">Fintech</span>
+          <span class="skill-pill accent">Real Estate</span>
+          <span class="skill-pill">AdTech</span>
+          <span class="skill-pill">Digital Media</span>
+          <span class="skill-pill">e-Commerce</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-label es">Certificaciones</div>
+    <div class="section-label en">Certifications</div>
+    <h2 class="section-title es">Formación continua</h2>
+    <h2 class="section-title en">Continuous learning</h2>
+
+    <!-- Featured -->
+    <div class="cert-featured">
+
+      <a class="cert-card-featured" href="certs/chief-digital-transformation-officer.pdf" target="_blank">
+        <div class="cert-issuer-badge"><span class="cert-issuer-dot"></span>Tec de Monterrey</div>
+        <div class="cert-card-name">Chief Digital Transformation Officer</div>
+        <div class="cert-card-meta">
+          <span class="cert-meta-tag">Certificado de Competencias</span>
+          <span class="cert-meta-tag">120 hrs</span>
+        </div>
+        <div class="cert-date">Marzo 2026</div>
+        <div class="cert-view-link">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span class="es">Ver certificado</span><span class="en">View certificate</span>
+        </div>
+      </a>
+
+      <a class="cert-card-featured" href="certs/product-management.pdf" target="_blank">
+        <div class="cert-issuer-badge"><span class="cert-issuer-dot"></span>Colectivo23</div>
+        <div class="cert-card-name">Product Management</div>
+        <div class="cert-card-meta">
+          <span class="cert-meta-tag">Especialización</span>
+          <span class="cert-meta-tag">64 hrs</span>
+        </div>
+        <div class="cert-date">Octubre 2025</div>
+        <div class="cert-view-link">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span class="es">Ver certificado</span><span class="en">View certificate</span>
+        </div>
+      </a>
+
+      <a class="cert-card-featured" href="certs/innovacion-financiera-era-digital.pdf" target="_blank">
+        <div class="cert-issuer-badge"><span class="cert-issuer-dot"></span>IPADE Business School</div>
+        <div class="cert-card-name">Innovación Financiera en la Era Digital</div>
+        <div class="cert-card-meta">
+          <span class="cert-meta-tag">Fintech</span>
+        </div>
+        <div class="cert-date">Junio 2023</div>
+        <div class="cert-view-link">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span class="es">Ver certificado</span><span class="en">View certificate</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Tec de Monterrey microcerts -->
+    <div class="cert-group">
+      <div class="cert-group-title es">Programa Transformación Digital — Tec de Monterrey</div>
+      <div class="cert-group-title en">Digital Transformation Program — Tec de Monterrey</div>
+      <div class="cert-grid-sm">
+        <a class="cert-card-sm" href="certs/roadmap-implementacion-transformacion-digital.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Microcertificado · 20 hrs</div>
+          <div class="cert-card-name">Roadmap de la Implementación en Transformación Digital</div>
+          <div class="cert-date">Marzo 2026</div>
+        </a>
+        <a class="cert-card-sm" href="certs/aceleracion-digital-negocios.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Microcertificado · 40 hrs</div>
+          <div class="cert-card-name">Aceleración Digital de Negocios</div>
+          <div class="cert-date">Enero 2026</div>
+        </a>
+        <a class="cert-card-sm" href="certs/diseño-centrado-persona.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Microcertificado · 20 hrs</div>
+          <div class="cert-card-name">Diseño Centrado en la Persona</div>
+          <div class="cert-date">Febrero 2026</div>
+        </a>
+        <a class="cert-card-sm" href="certs/tecnologias-estrategicas-transformacion-digital.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Microcertificado · 20 hrs</div>
+          <div class="cert-card-name">Tecnologías Estratégicas para la Transformación Digital</div>
+          <div class="cert-date">Noviembre 2025</div>
+        </a>
+        <a class="cert-card-sm" href="certs/alineacion-liderazgo-transformacion-digital.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Microcertificado · 20 hrs</div>
+          <div class="cert-card-name">Alineación del Liderazgo a la Transformación Digital</div>
+          <div class="cert-date">Octubre 2025</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- AI Applied -->
+    <div class="cert-group">
+      <div class="cert-group-title es">IA Aplicada</div>
+      <div class="cert-group-title en">Applied AI</div>
+      <div class="cert-grid-sm">
+        <a class="cert-card-sm" href="certs/ia-desarrollo-productos.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Coursiv · 3 hrs</div>
+          <div class="cert-card-name">IA para el Desarrollo de Productos</div>
+          <div class="cert-date">Marzo 2026</div>
+        </a>
+        <a class="cert-card-sm" href="certs/ia-gestores-proyectos.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Coursiv · 3 hrs</div>
+          <div class="cert-card-name">Fundamentos de IA para Gestores de Proyectos</div>
+          <div class="cert-date">Marzo 2026</div>
+        </a>
+        <a class="cert-card-sm" href="certs/ia-operaciones-empresariales.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Coursiv · 3 hrs</div>
+          <div class="cert-card-name">IA para Operaciones Empresariales</div>
+          <div class="cert-date">Marzo 2026</div>
+        </a>
+        <a class="cert-card-sm" href="certs/chatgpt.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Coursiv · 6 hrs</div>
+          <div class="cert-card-name">Maestro en ChatGPT</div>
+          <div class="cert-date">Febrero 2026</div>
+        </a>
+        <a class="cert-card-sm" href="certs/claude.pdf" target="_blank">
+          <div class="cert-issuer-badge" style="font-size:10px"><span class="cert-issuer-dot"></span>Coursiv · 5 hrs</div>
+          <div class="cert-card-name">Maestro en Claude</div>
+          <div class="cert-date">Febrero 2026</div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label es">Educación</div>
+    <div class="section-label en">Education</div>
+    <h2 class="section-title es">Formación académica</h2>
+    <h2 class="section-title en">Academic background</h2>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree es">Maestría en Tecnologías de la Información</div>
+        <div class="edu-degree en">Master's Degree — Information Technology</div>
+        <div class="edu-school">Tecnológico de Monterrey</div>
+        <div class="edu-years">2014 – 2017</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree es">Licenciatura en Administración de Tecnologías de la Información</div>
+        <div class="edu-degree en">Bachelor's — Computer/IT Administration & Management</div>
+        <div class="edu-school">Universidad del Valle de México</div>
+        <div class="edu-years">2007 – 2011</div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <h2 class="contact-title es">¿Hablamos?</h2>
+      <h2 class="contact-title en">Let's connect.</h2>
+      <p class="contact-sub es">
+        Estoy buscando nuevas oportunidades como Product Manager o Product Owner.<br>
+        Escríbeme y con gusto platicamos.
+      </p>
+      <p class="contact-sub en">
+        I'm actively looking for new opportunities as a Product Manager or Product Owner.<br>
+        Reach out — I'd love to connect.
+      </p>
+      <a href="mailto:linkvilory@hotmail.com" class="btn-white">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        linkvilory@hotmail.com
+      </a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/jonathanviloria" target="_blank" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="tel:+525545772739" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.49a16 16 0 0 0 6.6 6.6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +52 55 4577 2739
+        </a>
+        <a href="https://github.com/linkvilory/jviloria" target="_blank" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2025 Jonathan Viloria Mendoza</span>
+</footer>
+
+<script>
+  function setLang(lang, e) {
+    if (e) e.stopPropagation();
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  function toggleLang() {
+    const current = document.documentElement.getAttribute('data-lang');
+    setLang(current === 'es' ? 'en' : 'es');
+  }
+
+  // Set initial active state
+  setLang('es');
+</script>
+</body>
+</html>
