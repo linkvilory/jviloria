@@ -982,7 +982,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn
         </a>
-        <a href="Profile.pdf" download class="btn-secondary">
+        <a id="cv-download-btn" href="jonathan-viloria-es.pdf" download class="btn-secondary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span class="es">Descargar CV</span><span class="en">Download CV</span>
         </a>
@@ -1741,6 +1741,8 @@
     document.documentElement.setAttribute('data-lang', lang);
     document.getElementById('btn-es').classList.toggle('active', lang === 'es');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    const btn = document.getElementById('cv-download-btn');
+    btn.href = lang === 'es' ? 'jonathan-viloria-es.pdf' : 'jonathan-viloria-en.pdf';
   }
 
   function toggleLang() {
