@@ -87,6 +87,8 @@
 
     .nav-links a:hover { color: var(--accent); }
 
+    .hamburger { display: none; }
+
     .lang-toggle {
       display: flex;
       align-items: center;
@@ -255,6 +257,32 @@
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
+    }
+
+    .hero-looking {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+
+    .hero-looking-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-looking-tag {
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--bg-soft);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 20px;
     }
 
     .btn-primary {
@@ -921,6 +949,67 @@
       .hero-stats { gap: 1.5rem; }
       .nav-links { display: none; }
       #experience, #education { margin: 0 -1.5rem; padding: 4rem 1.5rem; }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 6px;
+        transition: background var(--transition);
+      }
+
+      .hamburger:hover { background: var(--bg-card); }
+
+      .hamburger span {
+        display: block;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+        transform-origin: center;
+      }
+
+      .hamburger span:nth-child(3) { width: 65%; }
+
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { width: 100%; transform: translateY(-7px) rotate(-45deg); }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem 1.5rem;
+        z-index: 99;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .mobile-menu.open { display: flex; }
+
+      .mobile-menu a {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        transition: color var(--transition);
+      }
+
+      .mobile-menu a:last-child { border-bottom: none; }
+      .mobile-menu a:hover { color: var(--accent); }
     }
 
     /* ── i18n hidden ── */
@@ -946,8 +1035,26 @@
       <button class="lang-btn" id="btn-es" onclick="setLang('es', event)">ES</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en', event)">EN</button>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMenu()" class="es">Sobre mí</a>
+  <a href="#about" onclick="closeMenu()" class="en">About</a>
+  <a href="#experience" onclick="closeMenu()" class="es">Experiencia</a>
+  <a href="#experience" onclick="closeMenu()" class="en">Experience</a>
+  <a href="#projects" onclick="closeMenu()" class="es">Proyectos</a>
+  <a href="#projects" onclick="closeMenu()" class="en">Projects</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#certifications" onclick="closeMenu()" class="es">Certificaciones</a>
+  <a href="#certifications" onclick="closeMenu()" class="en">Certifications</a>
+  <a href="#contact" onclick="closeMenu()" class="es">Contacto</a>
+  <a href="#contact" onclick="closeMenu()" class="en">Contact</a>
+</div>
 
 <main>
 
@@ -997,6 +1104,13 @@
         </a>
       </div>
 
+      <div class="hero-looking">
+        <span class="hero-looking-tag">Product Manager</span>
+        <span class="hero-looking-tag">Enterprise · B2B SaaS</span>
+        <span class="hero-looking-tag es">Remoto · Híbrido CDMX</span>
+        <span class="hero-looking-tag en">Remote · Hybrid CDMX</span>
+      </div>
+
       <div class="hero-stats">
         <div>
           <div class="stat-num">16+</div>
@@ -1040,37 +1154,36 @@
     <div class="about-grid">
       <div class="about-text es">
         <p>
-          Soy Product Manager especializado en el diseño de plataformas operativas inteligentes.
-          Mi trabajo se centra en ayudar a organizaciones a transformar procesos complejos en
-          sistemas digitales escalables mediante automatización, inteligencia artificial aplicada
-          y arquitecturas basadas en APIs.
+          Creo que los mejores productos no son los más sofisticados — son los que resuelven
+          el problema correcto de forma medible. Mi enfoque combina <strong>discovery basado en datos</strong>
+          con <strong>ejecución potenciada por IA</strong>: uso datos para entender el problema real,
+          y uso inteligencia artificial para iterar más rápido, tomar mejores decisiones y
+          escalar el impacto del equipo.
         </p>
         <p>
-          En los últimos años he evolucionado hacia un enfoque de <strong>AI-augmented product management</strong>,
-          donde la inteligencia artificial amplifica la capacidad de discovery, análisis de procesos
-          y prototipado de soluciones.
+          Vengo del lado técnico — diseñé SDKs, lideré equipos móviles, integré APIs — y eso
+          me permite hablar el mismo idioma que ingeniería sin perder de vista el valor para
+          el negocio.
         </p>
         <p>
-          Creo que la próxima generación de productos no será simplemente digital, sino
-          operativamente inteligente: procesos, datos y automatización trabajando de forma integrada
-          para crear organizaciones más eficientes.
+          Para mí, un producto exitoso no es el que se entrega, sino el que <strong>se adopta,
+          se mide y evoluciona</strong>.
         </p>
       </div>
       <div class="about-text en">
         <p>
-          I'm a Product Manager specialized in designing intelligent operational platforms.
-          My work focuses on helping organizations transform complex processes into scalable
-          digital systems through automation, applied AI, and API-based architectures.
+          I believe the best products aren't the most sophisticated — they're the ones that solve
+          the right problem in a measurable way. My approach combines <strong>data-driven discovery</strong>
+          with <strong>AI-powered execution</strong>: I use data to understand the real problem,
+          and AI to iterate faster, make better decisions, and scale team impact.
         </p>
         <p>
-          Over the last few years I've evolved toward an <strong>AI-augmented product management</strong>
-          approach, where artificial intelligence amplifies discovery capacity, process analysis,
-          and solution prototyping.
+          I come from the technical side — I designed SDKs, led mobile teams, integrated APIs —
+          and that lets me speak engineering's language without losing sight of business value.
         </p>
         <p>
-          I firmly believe the next generation of products won't simply be digital, but operationally
-          intelligent — where processes, data, and automation work in an integrated way to create
-          more efficient organizations.
+          To me, a successful product isn't one that's delivered — it's one that's <strong>adopted,
+          measured, and evolved</strong>.
         </p>
       </div>
 
@@ -1355,11 +1468,11 @@
         <div class="project-desc es">Definí la estrategia y roadmap para transformar una empresa tradicional on-premise a modelo SaaS multi-tenant, rediseñando la propuesta de valor y abriendo nuevos segmentos de mercado.</div>
         <div class="project-desc en">Defined the strategy and roadmap to transform a traditional on-premise company into a multi-tenant SaaS model, redesigning the value proposition and opening new market segments.</div>
         <ul class="project-results">
-          <li class="es">↓ Costos de infraestructura: de N servidores por cliente a una sola plataforma cloud</li>
-          <li class="en">↓ Infrastructure costs: from N servers per client to a single cloud platform</li>
-          <li class="es">↑ Alcance de mercado con precios más competitivos vía modelo modular</li>
+          <li class="es">↓ 60% en costo por cliente al pasar de infraestructura on-premise a plataforma cloud centralizada</li>
+          <li class="en">↓ 60% cost per client by moving from on-premise to centralized cloud platform</li>
+          <li class="es">↑ Alcance de mercado al reducir costo de entrada con modelo SaaS modular por suscripción</li>
           <li class="en">↑ Market reach with competitive pricing through modular model</li>
-          <li class="es">↓ Tiempo de desarrollo al eliminar múltiples instancias por monitorear</li>
+          <li class="es">↓ Tiempo de desarrollo al gestionar una sola plataforma en lugar de N instancias por cliente</li>
           <li class="en">↓ Development time by eliminating multiple instances to maintain</li>
         </ul>
       </div>
@@ -1376,10 +1489,10 @@
         <div class="project-desc es">Lideré la creación de un sistema de diseño para una plataforma de gestión documental que cubre web, móvil, Android e iOS, usando IA para acelerar la generación de componentes.</div>
         <div class="project-desc en">Led the creation of a design system for a document management platform covering web, mobile, Android and iOS, using AI to accelerate component generation.</div>
         <ul class="project-results">
-          <li class="es">↓ Tiempo de onboarding para nuevos diseñadores y desarrolladores</li>
-          <li class="en">↓ Onboarding time for new designers and developers</li>
-          <li class="es">↓ Horas de diseño y desarrollo por feature entregado</li>
-          <li class="en">↓ Design and development hours per delivered feature</li>
+          <li class="es">↓ 50% en esfuerzo total por feature gracias a la reutilización de componentes</li>
+          <li class="en">↓ 50% total effort per feature through component reuse</li>
+          <li class="es">↓ 60% en esfuerzo de diseño con sistema de componentes reutilizables</li>
+          <li class="en">↓ 60% design effort through reusable component library</li>
           <li class="es">↑ Consistencia UX en las 4 plataformas</li>
           <li class="en">↑ UX consistency across all 4 platforms</li>
         </ul>
@@ -1397,10 +1510,10 @@
         <div class="project-desc es">Identifiqué y automaticé 4 procesos críticos (PM, Investigación, Aprobaciones, Marketing) usando marcos de análisis de ROI e integrando IA para asistir a los colaboradores.</div>
         <div class="project-desc en">Identified and automated 4 critical processes (PM, Research, Approvals, Marketing) using ROI analysis frameworks and integrating AI to assist collaborators.</div>
         <ul class="project-results">
-          <li class="es">4 procesos automatizados con reducción de pasos manuales comprobada</li>
-          <li class="en">4 automated processes with proven reduction in manual steps</li>
-          <li class="es">↑ Adopción de IA entre colaboradores mediante capacitación práctica integrada</li>
-          <li class="en">↑ AI adoption among collaborators through integrated hands-on training</li>
+          <li class="es">↑ 35% en capacidad operativa al automatizar 4 procesos clave (PM, Investigación, Aprobaciones, Marketing)</li>
+          <li class="en">↑ 35% operational capacity by automating 4 key processes (PM, Research, Approvals, Marketing)</li>
+          <li class="es">Horas liberadas por semana por colaborador reorientadas a tareas estratégicas de mayor valor</li>
+          <li class="en">Hours freed weekly per collaborator, redirected to higher-value strategic tasks</li>
           <li class="es">↑ Capacidad del equipo al liberar horas de trabajo repetitivo</li>
           <li class="en">↑ Team capacity by freeing hours from repetitive work</li>
         </ul>
@@ -1418,10 +1531,10 @@
         <div class="project-desc es">Diseñé e implementé la estrategia de IA corporativa: framework de gobernanza, GPTs especializados por área e integración de OpenAI API en flujos operativos clave.</div>
         <div class="project-desc en">Designed and implemented corporate AI strategy: governance framework, area-specific GPTs, and OpenAI API integration into key operational workflows.</div>
         <ul class="project-results">
-          <li class="es">Democratización del conocimiento especializado para toda la organización</li>
-          <li class="en">Democratized specialized knowledge across the entire organization</li>
-          <li class="es">↑ Velocidad de respuesta en marketing, ventas y producto</li>
-          <li class="en">↑ Response speed across marketing, sales and product teams</li>
+          <li class="es">↑ 3x en acceso al conocimiento especializado sin depender de un experto disponible</li>
+          <li class="en">↑ 3x access to specialized knowledge without depending on available experts</li>
+          <li class="es">↓ Tiempo de resolución de dudas operativas al reducir escalaciones a expertos</li>
+          <li class="en">↓ Time to resolve operational questions by reducing escalations to subject experts</li>
           <li class="es">MCPs en roadmap como nuevo vector de producto comercializable</li>
           <li class="en">MCPs in roadmap as new commercializable product vector</li>
         </ul>
@@ -1439,10 +1552,10 @@
         <div class="project-desc es">Construí con vibe coding una herramienta interna que centraliza todas las actividades del PM — backlog, roadmap, decisiones y reportes — para dar visibilidad en tiempo real a stakeholders.</div>
         <div class="project-desc en">Built via vibe coding an internal tool that centralizes all PM activities — backlog, roadmap, decisions and reports — providing real-time visibility to stakeholders.</div>
         <ul class="project-results">
-          <li class="es">↑ Transparencia y alineación de todos los equipos con la estrategia de producto</li>
-          <li class="en">↑ Transparency and alignment of all teams with product strategy</li>
-          <li class="es">↓ Tiempo en reporting manual con generación automática de reportes</li>
-          <li class="en">↓ Manual reporting time with automatic report generation</li>
+          <li class="es">↑ 4x en visibilidad organizacional: stakeholders con acceso en tiempo real al estado del producto</li>
+          <li class="en">↑ 4x organizational visibility: stakeholders with real-time access to product status</li>
+          <li class="es">↓ Reuniones de status al eliminar la necesidad de actualizaciones manuales recurrentes</li>
+          <li class="en">↓ Status meetings by eliminating the need for recurring manual updates</li>
         </ul>
       </div>
 
@@ -1766,6 +1879,29 @@
 
   // Set initial active state
   setLang('es');
+
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    const open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+      closeMenu();
+    }
+  });
 </script>
 </body>
 </html>
